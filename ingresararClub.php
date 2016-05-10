@@ -16,6 +16,8 @@ and open the template in the editor.
         $dao = new DAO_Nacionalidad();
         $resp = $dao->sqlBuscarNacionalidad();
         ?>
+    <center>
+        <h1>Prueba Ingreso Club</h1>
         <form>
             <table>
                 <tr>
@@ -51,11 +53,20 @@ and open the template in the editor.
                                 ?>
                                 <option><?php echo $row[1];?></option>
                             <?php } ?>
-                        </select>
-                        
+                        </select> 
                     </td>
+                </tr>
+                <tr>
+                    <td>Arca inicial</td>
+                    <td><input type="number" value="" id="txtArca" name="txtArca"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="button" value="Enviar"/>
+                    </td> 
                 </tr>
             </table>
         </form>
+    </center>
     </body>
 </html>
