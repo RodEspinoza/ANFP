@@ -1,7 +1,17 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+function validarNombre(objeto)
+{
+    var valor = objeto.value;
+    var largo = objeto.length;
+    if (largo >= 3)
+    {
+        return true;
+    } else {
+        return false;
+    }
+}
+function validarFecha(objeto)
+{
+    var fecha = objeto.value;
+    
+}
 

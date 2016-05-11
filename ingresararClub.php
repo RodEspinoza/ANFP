@@ -18,7 +18,7 @@ and open the template in the editor.
         ?>
     <center>
         <h1>Prueba Ingreso Club</h1>
-        <form>
+        <form method="post" action="guardarClub.php">
             <table>
                 <tr>
                     <td>
@@ -46,27 +46,30 @@ and open the template in the editor.
                     </td>
                 </tr>
                 <tr>
+                    <td>Arca</td>
+                    <td><input type="number" id="txtArca" name="txtArca"></td>
+                </tr>
+                <tr>
                     <td>Nacionalidad</td>
                     <td>
-                        <select>
+                        <select name="opcNacionalidad">
                             <?php while ($row = mysqli_fetch_array($resp)) {
                                 ?>
-                                <option><?php echo $row[1];?></option>
-                            <?php } ?>
+                                <option><?php
+                                    echo $row[1];                                   
+                                    ?></option>
+<?php } ?>
                         </select> 
                     </td>
                 </tr>
-                <tr>
-                    <td>Arca inicial</td>
-                    <td><input type="number" value="" id="txtArca" name="txtArca"></td>
-                </tr>
+
                 <tr>
                     <td colspan="2">
-                        <input type="button" value="Enviar"/>
+                        <input type="submit" value="Enviar"/>
                     </td> 
                 </tr>
             </table>
         </form>
     </center>
-    </body>
+</body>
 </html>
