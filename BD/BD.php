@@ -5,12 +5,12 @@ class BD {
     private $host = "localhost";
     private $user = "root";
     private $pass = "";
-    private $bd = "anfp";
+    private $database = "anfp";
     private $cone;
 
     function __construct() {
         try {
-            $this->cone = mysqli_connect($this->host, $this->user, $this->pass, $this->bd);
+            $this->cone = mysqli_connect($this->host, $this->user, $this->pass, $this->database);
         } catch (Exception $ex) {
             echo $ex->getTraceAsString();
         }

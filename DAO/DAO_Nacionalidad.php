@@ -28,6 +28,7 @@ class DAO_Nacionalidad {
     public function sqlBuscarId($nombre) {
         try {
             $nombre=trim($nombre);
+            $sql = "SELECT * FROM nacionalidad  where Nombre_Nacionalidad='@n'";
             $sql=str_replace("@n",$nombre, $sql);
             $resp=$this->cone->sqlSeleccion($sql);
             return $resp;
