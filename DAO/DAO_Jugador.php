@@ -18,7 +18,7 @@ class DAO_Jugador {
     public function Add_Player($j) {
         try {
             $sql = "Insert into jugador values(null,'@nom','@ap','@fn',@pre,'@num',"
-                    . "@idClub,@idNacionalidad,@idEstado,@idPosicion)";
+                    ."@idClub,@idNacionalidad,@idEstado,@idPosicion)";
             $sql = str_replace("@nom", $j->getNombre(), $sql);
             $sql = str_replace("@ap", $j->getApellido(), $sql);
             $sql = str_replace("@fn", $j->getFecha_nac(), $sql);

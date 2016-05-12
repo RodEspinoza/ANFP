@@ -34,7 +34,7 @@ and open the template in the editor.
                         Fecha fundación 
                     </td>
                     <td>
-                        <input type="date" id="txtFecha" name="txtFundacion">
+                        <input type="date" id="txtFecha" name="txtFecha">
                     </td>
                 </tr>
                 <tr>
@@ -56,9 +56,9 @@ and open the template in the editor.
                             <?php while ($row = mysqli_fetch_array($resp)) {
                                 ?>
                                 <option><?php
-                                    echo $row[1];                                   
+                                    echo $row[1];
                                     ?></option>
-<?php } ?>
+                            <?php } ?>
                         </select> 
                     </td>
                 </tr>

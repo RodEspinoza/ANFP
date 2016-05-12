@@ -1,15 +1,24 @@
 <?php
 
 include '/BD/BD.php';
-include '/Entidad/Cl_Club.php';
+
 
 class DAO_Club {
 
     private $cone;
 
+    public function DAO_Club() {
+        try {
+            $this->cone = new BD();
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
     public function Add_Club($c) {
         try {
-            $sql = "Insert into club values(null,'@nom','@ff','@estadio',@arca,@idAnfp,@idUsuario,@idNacionalidad)";
+            $sql = "Insert into club(nombre,fecha_fundacion,estadio,arca,anfp_idanfp,usuario_idusuario,nacionalidad_idnacionalidad) ".
+                    "values('@nom','@ff','@estadio',@arca,@idAnfp,@idUsuario,@idNacionalidad)";
             $sql = str_replace("@nom", $c->getNombre(), $sql);
             $sql = str_replace("@ff", $c->getFechaFundacion(), $sql);
             $sql = str_replace("@estadio", $c->getEstadio(), $sql);
@@ -17,8 +26,8 @@ class DAO_Club {
             $sql = str_replace("@idAnfp", $c->getAnfp_idAnfp(), $sql);
             $sql = str_replace("@idUsuario", $c->getUsuario_idUsuario(), $sql);
             $sql = str_replace("@idNacionalidad", $c->getNacionalidad_idNacionalidad(), $sql);
-            $resp = $this->cone->sqlOperacion($sql);
-            return $resp;
+            $resp = $this->cone->sqlSeleccion($sql);
+            return $sql;
         } catch (Exception $ex) {
             echo $ex->getTraceAsString();
         }
@@ -51,6 +60,18 @@ class DAO_Club {
             return $resp;
         } catch (Exception $ex) {
             echo $ex->getTraceAsString();
+        }
+    }
+     public function sqlBuscarNacionalidad($nombre) {
+        try {
+            $nombre = trim($nombre);
+            $sql = "SELECT * FROM nacionalidad  where Nombre_Nac='@n'";
+            $sql = str_replace("@n", $nombre, $sql);
+            $resp = $this->cone->sqlSeleccion($sql);
+            
+            return $resp;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
         }
     }
 

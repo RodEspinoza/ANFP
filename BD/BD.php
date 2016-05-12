@@ -8,8 +8,9 @@ class BD {
     private $database = "anfp";
     private $cone;
 
-    function __construct() {
+    public function __construct() {
         try {
+
             $this->cone = mysqli_connect($this->host, $this->user, $this->pass, $this->database);
         } catch (Exception $ex) {
             echo $ex->getTraceAsString();
