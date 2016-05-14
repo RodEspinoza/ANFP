@@ -1,7 +1,6 @@
 <?php
 
-include '/BD/BD.php';
-
+include '/BD/Cl_Conexion.php';
 
 class DAO_Club {
 
@@ -9,7 +8,7 @@ class DAO_Club {
 
     public function DAO_Club() {
         try {
-            $this->cone = new BD();
+            $this->cone = new Cl_Conexion();
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
@@ -17,7 +16,7 @@ class DAO_Club {
 
     public function Add_Club($c) {
         try {
-            $sql = "Insert into club(nombre,fecha_fundacion,estadio,arca,anfp_idanfp,usuario_idusuario,nacionalidad_idnacionalidad) ".
+            $sql = "Insert into club(nombre,fecha_fundacion,estadio,arca,anfp_idanfp,usuario_idusuario,nacionalidad_idnacionalidad)" .
                     "values('@nom','@ff','@estadio',@arca,@idAnfp,@idUsuario,@idNacionalidad)";
             $sql = str_replace("@nom", $c->getNombre(), $sql);
             $sql = str_replace("@ff", $c->getFechaFundacion(), $sql);
@@ -27,11 +26,22 @@ class DAO_Club {
             $sql = str_replace("@idUsuario", $c->getUsuario_idUsuario(), $sql);
             $sql = str_replace("@idNacionalidad", $c->getNacionalidad_idNacionalidad(), $sql);
             $resp = $this->cone->sqlSeleccion($sql);
-            return $sql;
+            return $resp;
         } catch (Exception $ex) {
             echo $ex->getTraceAsString();
         }
     }
+
+    public function buscarClub($nombre) {
+        try {
+           $sql = "select * from club where nombre='@n'";
+           $sql=  str_replace("@n",$nombre, $sql);
+           $resp=$this->cone->sqlSeleccion($sql);
+           return $resp;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+        }
 
     public function Delete_Club($id) {
         try {
@@ -62,13 +72,14 @@ class DAO_Club {
             echo $ex->getTraceAsString();
         }
     }
-     public function sqlBuscarNacionalidad($nombre) {
+
+    public function sqlBuscarNacionalidad($nombre) {
         try {
             $nombre = trim($nombre);
             $sql = "SELECT * FROM nacionalidad  where Nombre_Nac='@n'";
             $sql = str_replace("@n", $nombre, $sql);
             $resp = $this->cone->sqlSeleccion($sql);
-            
+
             return $resp;
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();

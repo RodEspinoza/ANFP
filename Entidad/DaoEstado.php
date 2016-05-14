@@ -1,6 +1,6 @@
 <?php
 
-include '/BD/Cl_Conexion.php';
+include '/Cl_Conexion.php';
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,11 +13,11 @@ include '/BD/Cl_Conexion.php';
  *
  * @author Merumelada
  */
-class DAO_Nacionalidad {
+class DaoEstado {
 
     private $cone;
 
-    public function DAO_Nacionalidad() {
+    public function DaoEstado() {
         try {
             $this->cone = new Cl_Conexion();
         } catch (Exception $exc) {
@@ -28,7 +28,7 @@ class DAO_Nacionalidad {
     public function sqlBuscarId($nombre) {
         try {
             $nombre = trim($nombre);
-            $sql = "SELECT * FROM nacionalidad  where Nombre_Nacionalidad='@n'";
+            $sql = "SELECT * FROM estado where Nombre_Nac='@n'";
             $sql = str_replace("@n", $nombre, $sql);
             $resp = $this->cone->sqlSeleccion($sql);
             return $resp;
@@ -37,9 +37,9 @@ class DAO_Nacionalidad {
         }
     }
 
-    public function sqlBuscarNacionalidad() {
+    public function sqlBuscarEstado() {
         try {
-            $sql = "select * from nacionalidad ";
+            $sql = "select * from estado";
             $resp = $this->cone->sqlSeleccion($sql);
             return $resp;
         } catch (Exception $exc) {

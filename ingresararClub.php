@@ -4,13 +4,18 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<?php
 
+?>
 <html>
     <head>
         <meta charset="UTF-8">
         <title></title>
     </head>
     <body>
+        <script>
+         
+        </script>  
         <?php
         include './DAO/DAO_Nacionalidad.php';
         $dao = new DAO_Nacionalidad();
@@ -18,14 +23,14 @@ and open the template in the editor.
         ?>
     <center>
         <h1>Prueba Ingreso Club</h1>
-        <form method="post" action="guardarClub.php">
+        <form method="post" name="frmDatos" id="frmDatos" action="guardarClub.php">
             <table>
                 <tr>
                     <td>
                         Nombre
                     </td>
                     <td>
-                        <input type="text" value="" id="txtNombre" name="txtNombre">
+                        <input type="text" value="" id="txtNombre" name="txtNombre" required="true">
                     </td>
 
                 </tr>
@@ -34,7 +39,7 @@ and open the template in the editor.
                         Fecha fundación 
                     </td>
                     <td>
-                        <input type="date" id="txtFecha" name="txtFecha">
+                        <input type="date" id="txtFecha" name="txtFecha" required="true">
                     </td>
                 </tr>
                 <tr>
@@ -42,12 +47,12 @@ and open the template in the editor.
                         Estadio
                     </td>
                     <td>
-                        <input type="text" id="txtEstadio" name="txtEstadio">
+                        <input type="text" id="txtEstadio" name="txtEstadio" required="true">
                     </td>
                 </tr>
                 <tr>
                     <td>Arca</td>
-                    <td><input type="number" id="txtArca" name="txtArca"></td>
+                    <td><input type="number" id="txtArca" name="txtArca" required="true"></td>
                 </tr>
                 <tr>
                     <td>Nacionalidad</td>
@@ -70,6 +75,7 @@ and open the template in the editor.
                 </tr>
             </table>
         </form>
+        <div id="respuesta"></div>
     </center>
 </body>
 </html>

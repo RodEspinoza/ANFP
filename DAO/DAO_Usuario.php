@@ -1,6 +1,6 @@
 <?php
 
-include '/BD/BD.php';
+include '../BD/Cl_Conexion.php';
 
 class DAO_Usuario {
     

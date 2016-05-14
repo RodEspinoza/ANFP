@@ -1,6 +1,6 @@
 <?php
 
-include '/BD/BD.php';
+include '../BD/Cl_Conexion.php';
 include '/Entidad/Cl_Jugador.php';
 
 class DAO_Jugador {
@@ -9,7 +9,7 @@ class DAO_Jugador {
 
     public function DAO_Jugador() {
         try {
-            $this->cone = new BD();
+            $this->cone = new Cl_Conexion();
         } catch (Exception $ex) {
             echo $ex->getTraceAsString();
         }
@@ -18,7 +18,7 @@ class DAO_Jugador {
     public function Add_Player($j) {
         try {
             $sql = "Insert into jugador values(null,'@nom','@ap','@fn',@pre,'@num',"
-                    ."@idClub,@idNacionalidad,@idEstado,@idPosicion)";
+                    . "@idClub,@idNacionalidad,@idEstado,@idPosicion)";
             $sql = str_replace("@nom", $j->getNombre(), $sql);
             $sql = str_replace("@ap", $j->getApellido(), $sql);
             $sql = str_replace("@fn", $j->getFecha_nac(), $sql);
